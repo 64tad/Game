@@ -38,9 +38,13 @@ public class Player extends GameObject
 
 		//Start of sword code
 		if (game.getKeys()[KeyEvent.VK_SPACE])
-			this.sword = new Sword(x + 5, y + 5, 20, this);
+			this.sword = new Sword(x + 5, y + 5, 10, this);
 
 		if (sword != null)
+		{
 			sword.tick();
+			if (!sword.alive)
+				sword = null;
+		}
 	}
 }

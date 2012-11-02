@@ -9,13 +9,14 @@ public class GameObject
 	double y;
 	double size;
 	
-	double time = 0;
+	boolean alive;
 	
 	public GameObject(double x, double y, double size)
 	{
 		this.x = x;
 		this.y = y;
 		this.size = size;
+		alive = true;
 	}
 	
 	public void paint(Graphics2D g)

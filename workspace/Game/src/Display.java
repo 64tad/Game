@@ -7,7 +7,7 @@ public class Display extends JPanel implements Runnable
 	private static final long serialVersionUID = -4015573318498002014L;
 	
 	public final String gameName = "Game";
-	public final String gameVersion = "Alpha 0.0.1";
+	public final String gameVersion = "Alpha 0.0.2";
 	public static final int width = 800;
 	public static final int height = 600;
 	
