@@ -10,6 +10,7 @@ public class GameObject
 	double size;
 	
 	boolean alive;
+	boolean collides = false;
 	
 	public GameObject(double x, double y, double size)
 	{

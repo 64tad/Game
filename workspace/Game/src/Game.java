@@ -10,7 +10,7 @@ public class Game
 	Graphics2D g;
 
 	//Storage of GameObjects
-	ArrayList<GameObject> objects;
+	static ArrayList<GameObject> objects;
 	Player player;
 	InputHandler input;
 	
@@ -33,6 +33,7 @@ public class Game
 
 		player = new Player(10, 10, 10, this);
 		objects.add(new GameObject(400, 300, 10));
+		objects.add(new Block(100, 100, 10));
 	}
 
 	//Update All GameObjects And Player
@@ -77,4 +78,5 @@ public class Game
 	{
 		return input.key;
 	}
+	
 }

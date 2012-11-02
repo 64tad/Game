@@ -12,7 +12,7 @@ public class Sword extends GameObject
 	{
 		super(x, y, size);
 		this.owner = owner;
-		this.life = 100;
+		this.life = 200;
 	}
 
 	public void paint(Graphics2D g)
@@ -26,8 +26,6 @@ public class Sword extends GameObject
 		life--;
 		if (life < 0)
 			this.alive = false;
-		
-		System.out.println(life);
 		
 		this.x = owner.x;
 		this.y = owner.y;

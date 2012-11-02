@@ -27,14 +27,18 @@ public class Player extends GameObject
 	//Update the player (includes user input)
 	public void tick()
 	{
+		int moveX = 0, moveY = 0;
+
 		if (game.getKeys()[KeyEvent.VK_W])
-			this.y--;
+			moveY--;
 		if (game.getKeys()[KeyEvent.VK_S])
-			this.y++;
+			moveY++;
 		if (game.getKeys()[KeyEvent.VK_A])
-			this.x--;
+			moveX--;
 		if (game.getKeys()[KeyEvent.VK_D])
-			this.x++;
+			moveX++;
+
+		move(moveX, moveY);
 
 		//Start of sword code
 		if (game.getKeys()[KeyEvent.VK_SPACE])
@@ -46,5 +50,33 @@ public class Player extends GameObject
 			if (!sword.alive)
 				sword = null;
 		}
+
+	}
+
+	void move(double x, double y)
+	{
+		
+		boolean collidingX = false, collidingY = false;
+		double newX, newY;
+
+		//Check x
+		newX = x + this.x;
+		newY = y + this.y;
+
+		for (GameObject go : Game.objects)
+			if (Util.collides(new Block(newX, this.y, this.size), go))
+				if (go.collides)
+					collidingX = true;
+					
+		for (GameObject go : Game.objects)
+			if (Util.collides(new Block(this.x, newY, this.size), go))
+				if (go.collides)
+					collidingY = true;
+		
+		if (!collidingX)
+			this.x = newX;
+
+		if (!collidingY)
+			this.y = newY;
 	}
 }
