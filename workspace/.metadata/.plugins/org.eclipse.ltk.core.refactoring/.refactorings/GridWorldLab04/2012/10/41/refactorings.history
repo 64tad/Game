@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;GridWorldLab04/SoccerBall.gif&apos; to &apos;SpiralBall.gif&apos;" description="Rename resource &apos;SoccerBall.gif&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="SoccerBall.gif" name="SpiralBall.gif" stamp="1350059741792" updateReferences="true"/>
-</session>
