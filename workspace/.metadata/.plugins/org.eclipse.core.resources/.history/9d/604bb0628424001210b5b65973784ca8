@@ -4,16 +4,13 @@ import java.util.ArrayList;
 
 public class Game 
 {
-	//Buffer Graphics
 	BufferedImage img;
 	Graphics2D g;
 	
-	//Storage of GameObjects
 	ArrayList<GameObject> objects;
 	Player player;
 	InputHandler input;
 	
-	//Init
 	void start(InputHandler input)
 	{
 		img = new BufferedImage(Display.width, Display.height, BufferedImage.TYPE_INT_ARGB);
@@ -26,7 +23,6 @@ public class Game
 		objects.add(new GameObject(400, 300, 10));
 	}
 	
-	//Update All GameObjects And Player
 	void tick()
 	{
 		for (GameObject go : objects)
@@ -34,7 +30,6 @@ public class Game
 		player.tick();
 	}
 	
-	//Render Screen
 	void render()
 	{
 		g.clearRect(0, 0, Display.width, Display.height);
@@ -44,7 +39,6 @@ public class Game
 		player.paint(g);
 	}
 	
-	//For input
 	public boolean[] getKeys()
 	{
 		return input.key;

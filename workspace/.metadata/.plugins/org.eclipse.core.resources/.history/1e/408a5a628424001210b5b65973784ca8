@@ -22,7 +22,6 @@ public class Display extends JPanel implements Runnable
 	JFrame frame;
 	Thread thread;
 	
-	//Init For Program
 	public Display()
 	{
 		frame = new JFrame();
@@ -49,7 +48,6 @@ public class Display extends JPanel implements Runnable
 		display = new Display();
 	}
 	
-	//Starts The GameLoop
 	void start()
 	{
 		if (running)
@@ -62,7 +60,6 @@ public class Display extends JPanel implements Runnable
 		thread.start();
 	}
 
-	//Main Thread (Game Loop)
 	public void run() 
 	{
 		while (running)
@@ -73,7 +70,6 @@ public class Display extends JPanel implements Runnable
 		}
 	}
 	
-	//Draws The Buffer From Game To The Screen
 	void paintScreen()
 	{
 		display.getGraphics().drawImage(game.img, 0, 0, width, height, null);

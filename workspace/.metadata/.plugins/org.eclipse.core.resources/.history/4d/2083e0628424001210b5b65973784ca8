@@ -14,7 +14,6 @@ public class Player extends GameObject
 		this.game = game;
 	}
 
-	//Paints the player to the screen
 	public void paint(Graphics2D g)
 	{
 		g.setColor(Color.blue);
@@ -24,7 +23,6 @@ public class Player extends GameObject
 			sword.paint(g);
 	}
 
-	//Update the player (includes user input)
 	public void tick()
 	{
 		if (game.getKeys()[KeyEvent.VK_W])
@@ -36,7 +34,6 @@ public class Player extends GameObject
 		if (game.getKeys()[KeyEvent.VK_D])
 			this.x++;
 
-		//Start of sword code
 		if (game.getKeys()[KeyEvent.VK_SPACE])
 			this.sword = new Sword(x + 5, y + 5, 20, this);
 

@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-//Basic GameObject, Not Used Normally
 
 public class GameObject 
 {
