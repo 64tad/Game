@@ -1,0 +1,40 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class Game extends JPanel implements ActionListener
+{
+	private static final long serialVersionUID = 1L;
+	
+	static JFrame screen;
+	Timer frameTimer = new Timer(5, this);
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		repaint();
+	}
+	
+	public static void main(String args[])
+	{
+		screen = new JFrame();
+		screen.setTitle("Game v1");
+		screen.add(new Game());
+		screen.setSize(800, 600);
+		screen.setLocationRelativeTo(null);
+		screen.setBackground(Color.red);
+		screen.setVisible(true);
+		
+	}
+	
+	public void paint(Graphics g)
+	{
+		GameEngine.paint(g);
+		frameTimer.start();
+	}
+}

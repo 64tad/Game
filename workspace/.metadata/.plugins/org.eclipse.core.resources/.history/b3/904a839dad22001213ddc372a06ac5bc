@@ -1,0 +1,10 @@
+import java.applet.Applet;
+
+
+public class Screen extends Applet
+{
+	public void init()
+	{
+		
+	}
+}

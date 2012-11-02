@@ -1,0 +1,20 @@
+
+public class GameEngine 
+{
+
+	public void paint()
+	{
+		
+	}
+	
+	public void update()
+	{
+		
+	}
+	
+	public void useInput()
+	{
+		
+	}
+	
+}

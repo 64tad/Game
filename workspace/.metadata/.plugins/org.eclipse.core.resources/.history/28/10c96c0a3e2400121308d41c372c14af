@@ -1,0 +1,33 @@
+import java.awt.Color;
+import java.awt.Graphics2D;
+
+
+public class GameObject 
+{
+	double x;
+	double y;
+	double size;
+	
+	double time = 0;
+	
+	public GameObject(double x, double y, double size)
+	{
+		this.x = x;
+		this.y = y;
+		this.size = size;
+	}
+	
+	public void paint(Graphics2D g)
+	{
+		g.setColor(Color.red);
+		g.fillRect((int)x, (int)y, (int)size, (int)size);
+		g.drawString(time + "", 10, 10);
+	}
+	
+	public void tick()
+	{
+		time+=10;
+		this.x = 400 + Math.cos(time / 64.0 / 8.0) * 80.0;
+		this.y = 400 + Math.sin(time / 64.0 / 8.0) * 80.0;
+	}
+}

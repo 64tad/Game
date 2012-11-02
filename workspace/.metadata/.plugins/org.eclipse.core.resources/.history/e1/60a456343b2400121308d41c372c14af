@@ -1,0 +1,26 @@
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+
+public class Game 
+{
+	BufferedImage img;
+	Graphics2D g;
+	
+	void start()
+	{
+		img = new BufferedImage(Display.width, Display.height, BufferedImage.TYPE_INT_ARGB);
+		g = (Graphics2D) img.getGraphics();
+	}
+	
+	void tick()
+	{
+		
+	}
+	
+	void render()
+	{
+		System.out.println("Hi");
+		g.fillRect(10, 10, 10, 10);
+	}
+}

@@ -1,0 +1,126 @@
+/* 
+ * AP(r) Computer Science GridWorld Case Study:
+ * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
+ *
+ * This code is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * @author Cay Horstmann
+ * @author Chris Nevison
+ * @author Barbara Cloud Wells
+ *
+ ******************************************************************************************
+ ***  ALTERED 06-22-10 BY LEON SCHRAM
+ ***  The canMove condition is removed in the act method to observe object selfremoval.
+ ***  This file is used for the GridWorldLab03-Part2 lab exercise.
+ ***  This is the student, starting file, which is essentially a copy of the BoxBug.java file from Part1.
+ ***  Students will have to make several changes to this file.
+ ************************************************************************************
+ */
+
+import info.gridworld.actor.Bug;
+
+
+public class OctagonBug extends Bug
+{
+    private int steps;
+    private int sideLength;
+
+
+    public OctagonBug(int length)
+    {
+        steps = 0;
+        sideLength = length;
+    }
+
+  
+    public void act()
+    {
+       switch(steps)
+       {
+       case 0:
+    	   move();
+    	   break;
+       case 1:
+    	   move();
+    	   break;
+       case 2:
+    	   move();
+    	   break;
+       case 3:
+    	   turn();
+    	   move();
+    	   break;
+       case 4:
+    	   move();
+    	   break;
+       case 5:
+    	   turn();
+    	   move();
+    	   break;
+       case 6:
+    	   move();
+    	   break;
+       case 7:
+    	   move();
+    	   break;
+       case 8:
+    	   turn();
+    	   move();
+    	   break;
+       case 9:
+    	   move();
+    	   break;
+       case 10:
+    	   turn();
+    	   move();
+    	   break;
+       case 11:
+    	   move();
+    	   break;
+       case 12:
+    	   move();
+    	   break;
+       case 13:
+    	   turn();
+    	   move();
+    	   break;
+       case 14:
+    	   move();
+    	   break;
+       case 15:
+    	   turn();
+    	   move();
+    	   break;
+       case 16:
+    	   move();
+    	   break;
+       case 17:
+    	   move();
+    	   break;
+       case 18:
+    	   turn();
+    	   move();
+    	   break;
+       case 19:
+    	   move();
+    	   break;
+       case 20:
+
+    	   move();
+    	   break;
+       case 21:
+    	   move();
+    	   break;
+       }
+       steps++;
+       if (steps == 22)
+    	   steps = 0;
+    }
+}

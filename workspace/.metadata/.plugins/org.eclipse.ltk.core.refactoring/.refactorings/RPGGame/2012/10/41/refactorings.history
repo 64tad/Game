@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 2 elements to &apos;Game/src/self.tommy.game&apos;&#x0A;- Original project: &apos;RPGGame&apos;&#x0A;- Destination element: &apos;Game/src/self.tommy.game&apos;&#x0A;- Original elements:&#x0A;     com.tommysource.rpg.game.Delay.java&#x0A;     com.tommysource.rpg.game.Time.java&#x0A;- Update references to refactored element" description="Move compilation units" destination="=Game/src&lt;self.tommy.game" element1="/src&lt;com.tommysource.rpg.game{Delay.java" element2="/src&lt;com.tommysource.rpg.game{Time.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1350080298377" units="2" version="1.0"/>
+</session>

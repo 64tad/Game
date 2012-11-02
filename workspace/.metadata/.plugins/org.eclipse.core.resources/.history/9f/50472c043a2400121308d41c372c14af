@@ -1,0 +1,10 @@
+
+public class Game 
+{
+	void tick()
+	{
+		
+	}
+	
+	void render();
+}

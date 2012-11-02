@@ -1,0 +1,23 @@
+import java.io.IOException;
+import java.net.URL;
+
+public class Classwork
+{
+	static Object content = "";
+	public static void main(String args[])
+	{
+		try 
+		{
+			URL url = new URL("http://www.smcisd.net/");
+			content = url.getContent().toString();
+			content = url.getFile().toString();
+			content = url.getContent();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		System.out.println(content);
+	}
+}

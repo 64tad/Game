@@ -1,0 +1,61 @@
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class Display extends JPanel implements Runnable
+{
+	private static final long serialVersionUID = -4015573318498002014L;
+	
+	public final String gameName = "Game";
+	public final String gameVersion = "Alpha 0.0.1";
+	
+	Game game;
+	
+	boolean running = false;
+	
+	static Display display;
+	
+	JFrame frame;
+	Thread thread;
+	
+	public Display()
+	{
+		frame = new JFrame();
+		
+		frame.setSize(800, 600);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.add(this);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		
+		game = new Game();
+		
+		start();
+	}
+	
+	public static void main(String args[])
+	{
+		display = new Display();
+	}
+	
+	void start()
+	{
+		if (running)
+			return;
+					
+		running = true;
+		thread = new Thread(this);
+		System.out.println(gameName + " Version " + gameVersion + " Started");
+		thread.start();
+	}
+
+	public void run() 
+	{
+		while (running)
+		{
+			game.tick();
+			game.render();
+		}
+	}
+}

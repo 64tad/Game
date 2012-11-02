@@ -1,0 +1,30 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class Screen extends JPanel
+{
+	private static final long serialVersionUID = 5241834608422998589L;
+	
+	static JFrame screen;
+	
+	public static void main(String args[])
+	{
+		System.out.println("Game V1 Starting Up...");
+		screen = new JFrame("3D Testing");
+		screen.setSize(800, 600);
+		screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		screen.setBackground(Color.LIGHT_GRAY);
+		screen.add(new Screen());
+		screen.setVisible(true);
+	}
+	
+	public void paint (Graphics g)
+	{
+		g.setColor(Color.blue);
+		g.fillRect(10, 10, 10, 10);
+	}
+}

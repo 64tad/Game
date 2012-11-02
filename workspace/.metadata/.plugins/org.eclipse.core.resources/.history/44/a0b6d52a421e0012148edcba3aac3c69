@@ -1,0 +1,92 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
+
+public class Screen extends JFrame implements KeyListener, MouseListener, MouseMotionListener
+{
+	private static final long serialVersionUID = 5241834608422998589L;
+
+	static JFrame screen;
+	
+	static boolean keys[] = new boolean[255];
+	
+	public Screen()
+	{
+		screen.addKeyListener(this);
+		screen.addMouseListener(this);
+		screen.addMouseMotionListener(this);
+	}
+	
+	public static void main(String args[])
+	{
+		screen = new Screen();
+		
+		for (int i = 0; i < 255; i++)
+			keys[i] = false;
+		
+		screen.setSize(800, 600);
+		screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		screen.setLocationRelativeTo(null);
+		screen.setVisible(true);
+	}
+
+	public void keyTyped(KeyEvent e) 
+	{
+		
+	}
+	public void keyPressed(KeyEvent e) 
+	{
+		keys[e.getKeyCode()] = true;
+	}
+	public void keyReleased(KeyEvent e) 
+	{
+		keys[e.getKeyCode()] = false;
+	}
+
+
+	public void mouseDragged(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) 
+	{
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) 
+	{
+		
+	}
+	
+}

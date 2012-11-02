@@ -1,0 +1,129 @@
+package com.tommysource.unitcircle;
+
+import java.applet.Applet;
+import java.awt.BasicStroke;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Stroke;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+
+public class Screen extends Applet implements MouseMotionListener
+{
+	private static final long serialVersionUID = 8230319047386007282L;
+
+	int width, height;
+	Point mouse = new Point(0,0);
+
+	Stroke stroke = new BasicStroke(5);
+
+	ArrayList<Integer> angles = new ArrayList<Integer>();
+
+	public void init()
+	{
+		setSize(800,600);
+		height = this.getHeight();
+		width = this.getWidth();
+		System.out.println("Width: " + width + " Height: " + height);
+
+		//Add angle values to arraylist
+		angles.add(0);
+		angles.add(30);
+		angles.add(45);
+		angles.add(60);
+		angles.add(90);
+		angles.add(120);
+		angles.add(135);
+		angles.add(150);
+		angles.add(180);
+		angles.add(210);
+		angles.add(225);
+		angles.add(240);
+		angles.add(270);
+		angles.add(300);
+		angles.add(315);
+		angles.add(330);
+
+		this.addMouseMotionListener(this);
+	}
+
+	public void paint(Graphics g)
+	{
+		setSize(800,600);
+		Graphics2D b = (Graphics2D) g;
+		//Draw Center Lines
+		b.setStroke(new BasicStroke(3));
+		//b.drawLine(width/2, 0, width/2, height);
+		//b.drawLine(0, height/2, width, height/2);
+
+		//Draw Circle
+		drawCircle(width/2, height/2, 200, b);
+
+		checkToolTips(b, width/2, height/2, 200);
+	}
+	//Draws The Unit Circle With All The Angles In Place
+	void drawCircle(int x, int y, int r, Graphics2D b)
+	{
+		b.setStroke(new BasicStroke(5));
+		b.drawOval(x - r, y - r, r*2, r*2);
+		b.setStroke(new BasicStroke(3));
+
+		for (Integer i : angles)
+			drawAngledLine(width/2, height/2, r, i, b);
+	}
+
+	void drawAngledLine(int x, int y, int r, int angle, Graphics2D b)
+	{
+		b.drawLine(x, y,  x + (int)(r * Math.cos(Math.toRadians(angle))), y - (int)(r * Math.sin(Math.toRadians(angle))));
+		if (angle > 90 && angle < 270)
+			b.drawString(angle + "°", x + (int)(r * Math.cos(Math.toRadians(angle)) - 38), y - (int)(r * Math.sin(Math.toRadians(angle)) - 6));
+		else if (angle < 90 || angle > 270)
+			b.drawString(angle + "°", x + (int)(r * Math.cos(Math.toRadians(angle)) + 18), y - (int)(r * Math.sin(Math.toRadians(angle)) - 6));
+		else if (angle == 90)
+			b.drawString(angle + "°", x + (int)(r * Math.cos(Math.toRadians(angle)) - 8), y - (int)(r * Math.sin(Math.toRadians(angle)) + 10));
+		else if (angle == 270)
+			b.drawString(angle + "°", x + (int)(r * Math.cos(Math.toRadians(angle)) - 13), y - (int)(r * Math.sin(Math.toRadians(angle)) - 15));
+	}
+
+	void checkToolTips(Graphics2D b, int x, int y, int r)
+	{
+		b.drawString("(" + mouse.x + "," + mouse.y + ")", mouse.x, mouse.y);
+
+		int testX, testY;
+
+		for (Integer i : angles)
+		{
+			testX = x + (int)(r * Math.cos(Math.toRadians(i)));
+			testY = y - (int)(r * Math.sin(Math.toRadians(i)));
+
+			if (mouse.y > testY - 10 && mouse.y < testY + 10)
+			{
+				if (mouse.x > testX - 10 && mouse.x < testX + 10)
+					drawToolTip(b, i);
+				
+			}
+			//b.drawRect(testX - 10, testY - 10, 20, 20);
+		}
+	}
+
+	void drawToolTip(Graphics2D b, int angle)
+	{
+		b.fillRect(mouse.x, mouse.y, 100, 50);
+	}
+
+	public void mouseDragged(MouseEvent e) 
+	{
+		mouse.x = e.getX();
+		mouse.y = e.getY();
+		repaint();
+	}
+	public void mouseMoved(MouseEvent e) 
+	{
+		mouse.x = e.getX();
+		mouse.y = e.getY();
+		repaint();
+	}
+
+}
