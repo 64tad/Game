@@ -31,9 +31,10 @@ public class Game
 
 		this.input = input;
 
-		player = new Player(10, 10, 10, this);
+		player = new Player(10, 10, 20, this);
 		objects.add(new GameObject(400, 300, 10));
 		objects.add(new Block(100, 100, 10));
+		objects.add(new Block(200, 100, 50));
 	}
 
 	//Update All GameObjects And Player

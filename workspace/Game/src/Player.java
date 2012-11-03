@@ -8,6 +8,8 @@ public class Player extends GameObject
 	Game game;
 	Sword sword;
 
+	double lookX = 0, lookY = 0;
+
 	public Player(double x, double y, double size, Game game)
 	{
 		super(x, y, size);
@@ -19,6 +21,9 @@ public class Player extends GameObject
 	{
 		g.setColor(Color.blue);
 		g.fillRect((int)x, (int)y, (int)size, (int)size);
+
+		g.setColor(Color.magenta);
+		g.fillRect((int)((x + size/2 - 3) + lookX * 10), (int)((y + size / 2 - 8 / 2) + lookY * 10), 8, 8);
 
 		if (sword != null)
 			sword.paint(g);
@@ -53,26 +58,32 @@ public class Player extends GameObject
 
 	}
 
-	void move(double x, double y)
+	void move(double moveX, double moveY)
 	{
-		
+
 		boolean collidingX = false, collidingY = false;
 		double newX, newY;
 
 		//Check x
-		newX = x + this.x;
-		newY = y + this.y;
+		newX = moveX + this.x;
+		newY = moveY + this.y;
+		
+		if ((moveX != 0 && moveY != 0) || (moveX != 0 || moveY != 0))
+		{
+			lookX = moveX;
+			lookY = moveY;
+		}
 
 		for (GameObject go : Game.objects)
 			if (Util.collides(new Block(newX, this.y, this.size), go))
 				if (go.collides)
 					collidingX = true;
-					
+
 		for (GameObject go : Game.objects)
 			if (Util.collides(new Block(this.x, newY, this.size), go))
 				if (go.collides)
 					collidingY = true;
-		
+
 		if (!collidingX)
 			this.x = newX;
 
