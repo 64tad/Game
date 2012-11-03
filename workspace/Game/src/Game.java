@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class Game 
 {
@@ -10,8 +9,8 @@ public class Game
 	Graphics2D g;
 
 	//Storage of GameObjects
-	static ArrayList<GameObject> objects;
-	Player player;
+	static World world;
+	static Player player;
 	InputHandler input;
 	
 	//Data For Fps Counter
@@ -25,16 +24,19 @@ public class Game
 	//Init
 	void start(InputHandler input)
 	{
+		//Init worlds
+		WorldSaves.makeWorlds();
+		
 		img = new BufferedImage(Display.width, Display.height, BufferedImage.TYPE_INT_ARGB);
 		g = (Graphics2D) img.getGraphics();
-		objects = new ArrayList<GameObject>();
 
+		world = WorldSaves.world2;
+		
 		this.input = input;
 
 		player = new Player(10, 10, 20, this);
-		objects.add(new GameObject(400, 300, 10));
-		objects.add(new Block(100, 100, 10));
-		objects.add(new Block(200, 100, 50));
+		
+		
 	}
 
 	//Update All GameObjects And Player
@@ -42,14 +44,14 @@ public class Game
 	{
 		time++;
 		
-		for (GameObject go : objects)
+		for (GameObject go : world.getWorld())
 			go.tick();
 		player.tick();
 		
 		//Remove all "dead" GameObjects
-		for (int i = 0; i < objects.size(); i++)
-			if (!objects.get(i).alive)
-				objects.remove(i);
+		for (int i = 0; i < world.getWorld().size(); i++)
+			if (!world.getWorld().get(i).alive)
+				world.getWorld().remove(i);
 		
 		//Update Fps Counter
 		currentFPS++;
@@ -66,7 +68,7 @@ public class Game
 	{
 		g.clearRect(0, 0, Display.width, Display.height);
 
-		for (GameObject go : objects)
+		for (GameObject go : world.getWorld())
 			go.paint(g);
 		player.paint(g);
 		
